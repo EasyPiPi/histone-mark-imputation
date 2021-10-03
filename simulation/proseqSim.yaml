@@ -1,0 +1,8 @@
+name: proseqSim
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bedops
+  - bedtools
+  - ucsc-bedgraphtobigwig

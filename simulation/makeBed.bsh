@@ -8,11 +8,9 @@ do
  do
    echo $i $r
    ./mcmc_polii $i $r | sort-bed - > tmp.bed
-   bedtools genomecov -bg -strand + -i tmp.bed -g /local/storage/data/hg19/hg19.chromInfo > tmp.plus.bg
-   bedtools genomecov -bg -strand - -i tmp.bed -g /local/storage/data/hg19/hg19.chromInfo > tmp.minus.bg
-   bedGraphToBigWig tmp.plus.bg /local/storage/data/hg19/hg19.chromInfo data_${i}_${r}.plus.bw
-   bedGraphToBigWig tmp.minus.bg /local/storage/data/hg19/hg19.chromInfo data_${i}_${r}.minus.bw
+   bedtools genomecov -bg -strand + -i tmp.bed -g chrominfo.txt > tmp.plus.bg
+   bedtools genomecov -bg -strand - -i tmp.bed -g chrominfo.txt > tmp.minus.bg
+   bedGraphToBigWig tmp.plus.bg chrominfo.txt data_${i}_${r}.plus.bw
+   bedGraphToBigWig tmp.minus.bg chrominfo.txt data_${i}_${r}.minus.bw
  done
 done
-
-
