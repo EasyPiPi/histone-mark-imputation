@@ -2,7 +2,7 @@
  *
  *  Monte Carlo simulation of Pol II
  *
- *  Parameters: 
+ *  Parameters:
  *  - Initiation.
  *  - Release from pause.
  *  - Gene length.
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 const int tu_size = 25000;
-const int duration = 1000; // seconds.
+const int duration = 10000; // seconds.
 const int offset = 1000000;
 
 const int uas_size   = 250;  // TU size.
@@ -69,7 +69,7 @@ void terminate_polii(struct polii *remove, struct polii *previous, struct polii 
 
   // What happens if remove is the first Pol II?
   if (previous == NULL) { // Then we are popping the first element. This should be vanishingly rare.
-   if(*first == NULL ) 
+   if(*first == NULL )
      return;
 
    *first = (*first)->next;
@@ -87,11 +87,11 @@ void move_polii(struct polii *current) {
 
  if(current->strand == '+')
    current->position += k; // Move Pol II.
- else 
+ else
    current->position -= k;
 }
 
-// Release a Pol II into productive elongation. 
+// Release a Pol II into productive elongation.
 void release_polii(struct polii *current) {
   // Release Pol II.
   current->paused=0;
@@ -105,7 +105,7 @@ void in_silico_proseq(struct polii *first) {
     printf("chr6_ssto_hap7\t%d\t%d\tn\t1\t%c\n", current->position+offset, current->position+1+offset, current->strand);
     current = current->next;
   }
-} 
+}
 
 int mcmc_polii() {
  srand(time(0));
@@ -126,7 +126,7 @@ int mcmc_polii() {
       paused[i] = 1;
     }
   }
- 
+
   current = first;
   previous = NULL;
   while(current != NULL) {
@@ -138,7 +138,7 @@ int mcmc_polii() {
    }
    else {
     move_polii(current); // If not paused, move the Pol II.
- 
+
     // If position > tu_size, terminate.
     if((current->position > tu_size && current->strand == '+') || (current->position < (uas_size - uas_offset) && current->strand == '-')) {
       draw = (double)rand()/ (double)RAND_MAX;
@@ -149,7 +149,7 @@ int mcmc_polii() {
       }
     }
    }
-   
+
    previous = current;
    current = current->next;
   }
@@ -173,5 +173,3 @@ int main(int argc, char *argv[]) {
 
  return(mcmc_polii());
 }
-
-
