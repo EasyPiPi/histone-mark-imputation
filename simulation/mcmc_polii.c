@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 const int tu_size = 25000;
-const int duration = 10000; // seconds.
+const int duration = 2000; // seconds.
 const int offset = 1000000;
 
 const int uas_size   = 250;  // TU size.
@@ -110,7 +110,7 @@ void in_silico_proseq(struct polii *first) {
 int mcmc_polii() {
  srand(time(0));
 
- int ncells= 10000, i, t;
+ int ncells= 50000, i, t;
  struct polii *first = NULL, *previous = NULL, *current = NULL;
 
  double draw;

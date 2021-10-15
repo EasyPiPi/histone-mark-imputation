@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-INIT=(1.0 0.1 0.01 0.001)
-RELE=(1.0 0.1 0.01 0.001)
+INIT=(10.0 1.0 0.1 0.01)
+RELE=(10.0 1.0 0.1 0.01)
 for i in ${INIT[*]}
 do
  for r in ${RELE[*]}
