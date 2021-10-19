@@ -1,4 +1,3 @@
 simulation/*.bw
 simulation/tmp.*
-simulation/duration_1000/
-simulation/durarion_10000/
+simulation/duration_*/
