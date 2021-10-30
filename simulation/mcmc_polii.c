@@ -121,7 +121,7 @@ int mcmc_polii() {
   // For each cell, determine whether a new Pol II is added.
   for(i=0;i<ncells;i++) {
     draw = (double)rand()/ (double)RAND_MAX;
-    if(draw < p_i && paused[i] == 0) { // Don't initiatlize unless the pause position is free.
+    if(draw < p_i) { // Don't initiatlize unless the pause position is free.
       new_polii(&first, i); // Create a new pol ii, place it in the pause.
       paused[i] = 1;
     }
